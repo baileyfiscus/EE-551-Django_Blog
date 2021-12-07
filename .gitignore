@@ -1,4 +1,5 @@
-blog/
+__pycache__/
+
+./blog/
 FinalProjectSite/db.sqlite3
-FinalProjectSite/FinalProjectSite/__pycache__/
 
