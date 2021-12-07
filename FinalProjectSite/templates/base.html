@@ -17,6 +17,7 @@
     font-size: 17px;
     color:green;
     background-color: #000000;
+    background: black;
 }
 .shadow {
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
@@ -34,6 +35,21 @@
     background-color: black;
     border-color: green;
 }
+    .button2 {
+
+    }
+
+    .button2:hover {
+	color: green;
+        box-shadow: 0 16px 48px green;
+	}
+
+	            *{
+                margin: 0;
+                padding: 0;
+            }
+            
+    canvas {position:absolute;}
 </style>
 
 <!-- Navigation -->
@@ -43,12 +59,15 @@
 	<div class="collapse navbar-collapse" id="navbarResponsive">
 	    <ul class="navbar-nav ml-auto">
 		<li class="nav-item">
-		    <a class="nav-link font-weight-bold matrix-colors" href="http://127.0.0.1:8000">Home</a>
+		    <a class="nav-link font-weight-bold matrix-colors button2" href="http://127.0.0.1:8000">Home</a>
 		</li>
 	    </ul>
 	</div>
     </div>
 </nav>
+
+<canvas id="c"></canvas>
+
 {% block content %}
 <!-- Content Goes here -->
 {% endblock content %}
@@ -57,5 +76,60 @@
 <footer class="py-3 bg-grey">
     <p class="m-0 matrix-colors text-center ">Everything that has a beginning has an end.</p>
 </footer>
+
+<script>
+	/* Matrix Canvas code By Boujjou Achraf*/
+	var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+
+        //making the canvas full screen
+        c.height = window.innerHeight;
+        c.width = window.innerWidth;
+
+        //chinese characters - taken from the unicode charset
+        var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        //converting the string into an array of single characters
+        matrix = matrix.split("");
+
+        var font_size = 10;
+        var columns = c.width/font_size; //number of columns for the rain
+        //an array of drops - one per column
+        var drops = [];
+        //x below is the x coordinate
+        //1 = y co-ordinate of the drop(same for every drop initially)
+        for(var x = 0; x < columns; x++)
+            drops[x] = 1; 
+
+        //drawing the characters
+        function draw()
+        {
+            //Black BG for the canvas
+            //translucent BG to show trail
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.fillStyle = "#008000";//green text
+            ctx.font = font_size + "px arial";
+            //looping over drops
+            for(var i = 0; i < drops.length; i++)
+            {
+                //a random chinese character to print
+                var text = matrix[Math.floor(Math.random()*matrix.length)];
+                //x = i*font_size, y = value of drops[i]*font_size
+                ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+                //sending the drop back to the top randomly after it has crossed the screen
+                //adding a randomness to the reset to make the drops scattered on the Y axis
+                if(drops[i]*font_size > c.height && Math.random() > 0.975)
+                    drops[i] = 0;
+
+                //incrementing Y coordinate
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+</script>
 </body>
 </html>
