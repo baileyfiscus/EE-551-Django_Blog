@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+    .matrix-text {
+        color: green;
+	font-family: "VT323", sans-serif;
+        background-color: #000000;
+        box-shadow: 0 16px 48px black;
+	border-color: green;
+    }
+</style>
+
+<div class="container matrix-text">
+  <div class="row">
+    <div class="col-md card mb-4  mt-3 left  top matrix-text">
+      <div class="card-body matrix-text">
+        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+        <p class=" matrix-text">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="card-text matrix-text">{{ object.content | safe }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

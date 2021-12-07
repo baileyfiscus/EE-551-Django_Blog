@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Bailey's Matrix Blog</title>
+        <link href="https://fonts.googleapis.com/css?family=VT323:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous" />
+</head>
+
+<body>
+<style>
+    body {
+    font-family: "VT323", sans-serif;
+    font-size: 17px;
+    color:green;
+    background-color: #000000;
+}
+.shadow {
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
+.masthead {
+    background: green;
+    height: auto;
+    padding-bottom: 15px;
+    box-shadow: 0 16px 48px green;
+    padding-top: 10px;
+}
+.matrix-colors {
+    font-family: "VT323", sans-serif;
+    color: green;
+    background-color: black;
+    border-color: green;
+}
+</style>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg shadow matrix-colors" id="mainNav">
+    <div class="container-fluid">
+	<a class="navbar-brand matrix-colors href="{% url 'home' %}">Bailey's Matrix Blog</a>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+	    <ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+		    <a class="nav-link font-weight-bold matrix-colors" href="http://127.0.0.1:8000">Home</a>
+		</li>
+	    </ul>
+	</div>
+    </div>
+</nav>
+{% block content %}
+<!-- Content Goes here -->
+{% endblock content %}
+
+<!-- Footer -->
+<footer class="py-3 bg-grey">
+    <p class="m-0 matrix-colors text-center ">Everything that has a beginning has an end.</p>
+</footer>
+</body>
+</html>

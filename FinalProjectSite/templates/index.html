@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% block content %}
+<style>
+    body {
+        font-family: "VT323", sans-serif;
+        font-size: 18px;
+        background-color: #000000;
+    }
+    
+    .head_text {
+        color: green;
+    }
+    
+    .card {
+        color: green;
+	font-family: "VT323", sans-serif;
+        background-color: #000000;
+        box-shadow: 0 16px 48px #000000;
+	border-color: green;
+    }
+
+    .invcard {
+        color: black;
+	font-family: "VT323", sans-serif;
+        background-color: green;
+        box-shadow: 0 16px 48px green;
+    }
+</style>
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container invcard">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading text-black">
+                    <h3 class=" site-heading my-4 mt-3">Countdown to Matrix 4 Release:</h3>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md mt-3 center">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary matrix-colors">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}
